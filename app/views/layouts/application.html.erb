@@ -11,20 +11,10 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
-  <render>
-  <div class ="footer">
-  <div class ="footer-links">
-  <a href='#'><i class="fab fa-instagram"></i></a>
-  <a href='#'><i class="fab fa-facebook"></i></a>
-  <a href='#'><i class="fab fa-twitter"></i></a>
-  </div>
-</div>
- <render
-
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <% render 'shared/footer' %>
   </body>
 </html>
