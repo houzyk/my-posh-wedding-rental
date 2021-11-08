@@ -16,8 +16,8 @@
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 40px;
 }
 
 .nav-bar {
@@ -26,8 +26,8 @@
   justify-content: space-between;
 }
 
-.nav-bar i {
-  font-size: 40px;
+.user {
+  font-size: 18px;
   border: solid beige 1px;
   padding: 10px;
 }
@@ -35,4 +35,5 @@
 .text-change {
   font-family: cursive;
   color: rgb(41, 159, 228);
+  font-size: 18px;
 }
