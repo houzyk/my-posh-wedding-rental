@@ -6,6 +6,7 @@
         <div>
           <h2><%= item.name%> <span class="item-category">#<%= item.category%></span></h2>
           <p><%= item.description%></p>
+          <%= link_to 'Go to the item', item_path(item) %>
         </div>
           <h2 class="card-trip-pricing">Rs. <%= item.price%></h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered"/>

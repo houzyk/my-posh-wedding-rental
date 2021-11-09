@@ -6,10 +6,11 @@
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-}
+  }
 
 .btn-ghost:hover {
   opacity: 1;
+  text-decoration: none;
 }
 
 .btn-flat {

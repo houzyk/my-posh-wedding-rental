@@ -1,0 +1,8 @@
+<h1>All my bookings</h1>
+<ol>
+  <% @bookings.each do |booking| %>
+  <%# <% if booking.user == current_user %>
+    <li><%= booking.comment %></li>
+    <% end %>
+  <%# <% end %>
+</ol>
