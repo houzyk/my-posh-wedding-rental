@@ -1,5 +1,15 @@
-<ul>
+<div class="cards">
   <% @items.each do |item| %>
-  <li><%= item.name %></li>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= item.name%> <span class="item-category">#<%= item.category%></span></h2>
+          <p><%= item.description%></p>
+        </div>
+          <h2 class="card-trip-pricing">Rs. <%= item.price%></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
