@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :users do
   #   resources :items, only: [:edit, :update, :show]
   # end
-  resources :items, only: %i[index show] do
+  resources :items do
     collection do
       get :search
     end
