@@ -2,6 +2,10 @@
 <p><%= @item.description %></p>
 
 
-<% if policy(@item).index? %>
+
   <%= link_to 'Go back', items_path %>
+
+
+<% if policy(@item).edit? %>
+  <%= link_to 'Edit Item', edit_item_path(@item) %>
 <% end %>
