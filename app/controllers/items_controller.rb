@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: %i[index show]
   after_action :authorize_item, except: :index
   before_action :set_item, only: %i[show edit update]
 
   def index
+
     @items = policy_scope(Item)
   end
 
