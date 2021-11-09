@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  after_action :authorize_item
+  after_action :authorize_item, except: :index
+
   def index
-    @items = Item.all
+    @items = policy_scope(Item)
   end
 
   def new
