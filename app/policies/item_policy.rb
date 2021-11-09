@@ -6,7 +6,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.owner
   end
 
   def update?

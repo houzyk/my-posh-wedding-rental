@@ -1,6 +1,10 @@
 <h1>This is the root</h1>
-<% if policy(Item).create? %>
-  <%= link_to "New item", new_item_path %>
+
+<% if user_signed_in? %>
+  <% if policy(Item).create? %>
+    <%= link_to "New item", new_item_path %>
+  <% end %>
 <% end %>
+
 
   <%= link_to 'See our products', items_path %>
