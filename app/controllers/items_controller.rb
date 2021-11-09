@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+
   after_action :authorize_item, except: :index
+  before_action :set_item, only: %i[show edit update]
 
   def index
     @items = policy_scope(Item)
@@ -10,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -26,10 +27,24 @@ class ItemsController < ApplicationController
   end
 
 
+  def edit
+  end
+
+  def update
+    @item.update(item_params)
+    redirect_to item_path(@item)
+  end
+
+
   # def search
   # end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 
   def authorize_item
     authorize @item
