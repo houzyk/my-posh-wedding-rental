@@ -19,13 +19,6 @@ class BookingsController < ApplicationController
     end
     authorize @booking
   end
-  # def create
-  #   @item = Item.find(params[item_id])
-  #   @booking = Booking.new(booking_params)
-  #   @booking.item = @item
-  #   @booking.save
-  #   redirect_to item_path(@item)
-  # end
 
   # def edit
   #   @item = Item.find(params[item_id])
@@ -39,9 +32,9 @@ class BookingsController < ApplicationController
 
 
 
-  # def index
-  #   @bookings = Booking.all
-  # end
+  def index
+    @bookings = policy_scope(Booking)
+  end
 
   # def show
   # end
