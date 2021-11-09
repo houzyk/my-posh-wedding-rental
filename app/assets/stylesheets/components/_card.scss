@@ -57,6 +57,11 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease-out;
+}
+
+.card-category:hover {
+  transform: scale(1.05);
 }
 
 .cards {
