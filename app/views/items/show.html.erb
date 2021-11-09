@@ -4,8 +4,14 @@
 
 
   <%= link_to 'Go back', items_path %>
-
+<% if policy(Booking).new? %>
+  <%= link_to 'Add booking', new_item_booking_path(@item) %>
+<% end %>
 
 <% if policy(@item).edit? %>
   <%= link_to 'Edit Item', edit_item_path(@item) %>
+<% end %>
+
+<% if policy(Booking).index? %>
+  <%= link_to 'View All My Bookings', bookings_path %>
 <% end %>
