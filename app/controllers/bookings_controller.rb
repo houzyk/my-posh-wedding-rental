@@ -1,14 +1,14 @@
 class BookingsController < ApplicationController
-  # before_action :set_booking, only: %i[show destroy]
+  before_action :set_booking, only: %i[edit update destroy]
+  before_action :set_item, only: %i[new create]
+  # after_action :authorize_booking, expect: :index
 
   def new
-    @item = Item.find(params[:item_id])
     @booking = Booking.new
     authorize @booking
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @booking = Booking.new(booking_params)
     @booking.item = @item
     @booking.user = current_user
@@ -20,40 +20,41 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  # def edit
-  #   @item = Item.find(params[item_id])
-  #   @booking = Booking.find(params[:id])
-  # end
+  def edit
+    authorize @booking
+  end
 
-  # def update
-  #   @booking = Booking.find(params[:id])
-  #   @booking.update(params[:booking])
-  # end
-
-
+  def update
+    @booking.update(booking_params)
+    redirect_to bookings_path
+    authorize @booking
+  end
 
   def index
     @bookings = policy_scope(Booking)
   end
 
-  # def show
-  # end
-
-  # def destroy
-  #   @booking.destroy
-
-  #   redirect_to bookings_path
-  # end
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path
+    authorize @booking
+  end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:item_id, :user_id, :comment)
+    params.require(:booking).permit(:item_id, :user_id, :comment, :start, :return)
   end
 
-  # def set_booking
-  #   @booking = Booking.find(params[:id])
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  # def authorize_booking
+  #   authorize @booking
   # end
-
-
 end

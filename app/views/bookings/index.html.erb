@@ -1,8 +1,12 @@
 <h1>All my bookings</h1>
 <ol>
   <% @bookings.each do |booking| %>
-  <%# <% if booking.user == current_user %>
-    <li><%= booking.comment %></li>
-    <% end %>
-  <%# <% end %>
+    <li>
+      <%= booking.comment %> |
+      <%= booking.start %> |
+      <%= booking.return %>
+      <%= link_to "Edit This Booking", edit_booking_path(booking) %>
+      <%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"} %>
+    </li>
+  <% end %>
 </ol>

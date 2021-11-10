@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update]
 
   def index
-
     @items = policy_scope(Item)
   end
 
@@ -27,7 +26,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def edit
   end
 
@@ -35,7 +33,6 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to item_path(@item)
   end
-
 
   # def search
   # end
@@ -46,12 +43,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-
   def authorize_item
     authorize @item
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :category)
+    params.require(:item).permit(:name, :description, :price, :category, :photo)
   end
 end
