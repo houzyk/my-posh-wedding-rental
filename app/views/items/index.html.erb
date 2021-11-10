@@ -18,12 +18,15 @@
       <% end %>
   </div>
 
-  <div id="map"
+
+  <%
+=begin%>
+<div id="map"
       style="width: 100%; height: 600px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <%
-=begin%>
+
+      
  <img id="map" src='https://api.mapbox.com/?access_token=YOUR-TOKEN-HERE=pk.eyJ1IjoiZGhhbmlzdGhhIiwiYSI6ImNrdnQ2bXNoZjk2OXQybnF3am40ejNhNzcifQ.VfGx4oCViDIFwsWkmmaMpA'>
 <%
 =end%>
