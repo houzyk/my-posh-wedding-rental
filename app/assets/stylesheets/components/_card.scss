@@ -61,7 +61,7 @@
 }
 
 .card-category:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .cards {
@@ -69,6 +69,16 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   margin: 16px;
+  &.home-cards{
+    width: 70%;
+    margin: 30px auto;
+    grid-gap: 30px;
+  }
+}
+.home-cards{
+  .card-category{
+    height: 380px;
+  }
 }
 
 // Smallest device
