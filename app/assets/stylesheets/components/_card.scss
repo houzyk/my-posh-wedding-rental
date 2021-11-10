@@ -81,11 +81,35 @@
   }
 }
 
+.cards-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-item {
+  padding: 20px;
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
     grid-template-columns: 1fr;
   }
+}
+
+.text-title {
+  position: relative;
+  left: 15px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.description {
+  padding: 20px;
+  font-family: monospace;
 }
 
 // Small devices (landscape phones, 576px and up)
