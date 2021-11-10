@@ -1,5 +1,9 @@
-<div class="main-container">
-  <div class="cards card-grid">
+<div id="map"
+      style="width: 100%; height: 500px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  <div class="cards">
     <% @items.each do |item| %>
       <div class="card-trip">
         <%if item.photo.attached? %>
@@ -18,6 +22,12 @@
       <% end %>
   </div>
 
-  <img id="map" src='https://api.mapbox.com/?access_token=YOUR-TOKEN-HERE=pk.eyJ1IjoiZGhhbmlzdGhhIiwiYSI6ImNrdnQ2bXNoZjk2OXQybnF3am40ejNhNzcifQ.VfGx4oCViDIFwsWkmmaMpA'>
 
-</div>
+
+  <%
+=begin%>
+
+
+ <img id="map" src='https://api.mapbox.com/?access_token=YOUR-TOKEN-HERE=pk.eyJ1IjoiZGhhbmlzdGhhIiwiYSI6ImNrdnQ2bXNoZjk2OXQybnF3am40ejNhNzcifQ.VfGx4oCViDIFwsWkmmaMpA'>
+<%
+=end%>
