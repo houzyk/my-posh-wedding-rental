@@ -12,6 +12,10 @@
   <%= link_to 'Edit Item', edit_item_path(@item) %>
 <% end %>
 
-<% if policy(Booking).index? %>
+<%
+=begin%>
+ <% if policy(Booking).index? %>
   <%= link_to 'View All My Bookings', bookings_path %>
 <% end %>
+<%
+=end%>
