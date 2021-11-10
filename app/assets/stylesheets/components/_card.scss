@@ -1,5 +1,6 @@
 .card-trip {
   overflow: hidden;
+  height: 350px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -118,14 +119,12 @@
 
 .main-container {
   display: flex;
+  width: 100%;
 }
 
 #map {
-  height: 100hv;
+  height: 100vh;
   position: sticky;
   top: 1px;
-}
-
-.cards {
-  flex-grow: 1;
+  flex-shrink: 0;
 }
