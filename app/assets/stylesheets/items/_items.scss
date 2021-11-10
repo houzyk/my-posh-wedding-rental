@@ -1,0 +1,14 @@
+.index-display{
+  display: flex;
+  .cards{
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+  }
+  .card-trip{
+    height: 400px;
+  }
+  #map{
+    position: sticky;
+    top: 100px;
+  }
+}

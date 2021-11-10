@@ -1,16 +1,31 @@
+
+<% if @items.size == 0 %>
+  <h2>Your items ready for rent nearby</h2>
+<% elsif @items.size == 1 %>
+  <h2>You have 1 item ready for rent, be quick</h2>
+<% else %>
+  <h2>There are <%= @items.size %> wedding items ready for rental</h2>
+<% end %>
+
 <div class="index-display">
   <div class="cards">
     <% @items.each do |item| %>
       <div class="card-trip">
         <%if item.photo.attached? %>
-          <%= cl_image_tag item.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag item.photo.key, height: 500, width: 400, crop: :thumb, gravity: :face %>
         <%else%>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
         <%end%>
         <div class="card-trip-infos">
           <div>
             <h2><%= item.name%> <span class="item-category">#<%= item.category%></span></h2>
-            <p><%= item.description%></p>
+
+            <% if item.description.size > 40 %>
+              <p><%= item.description.first(40)%>...</p>
+            <% else %>
+              <p><%= item.description%></p>
+            <% end %>
+
             <%= link_to 'More Info', item_path(item) %>
           </div>
         </div>
@@ -19,7 +34,7 @@
   </div>
 
   <div id="map"
-        style="width: 100%; height: 500px;"
+        style="width: 1200px; height: 80vh;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
