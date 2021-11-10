@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
     @markers = @items.geocoded.map do |item|
       {
         lat: item.latitude,
-        lng: item.longitude
+        lng: item.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { item: item })
       }
     end
   end
@@ -55,6 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :category, :photo)
+    params.require(:item).permit(:name, :description, :price, :category, :photo, :address)
   end
 end
