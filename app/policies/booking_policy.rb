@@ -1,7 +1,6 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      # scope.all
       scope.where(user: user)
     end
   end
@@ -11,6 +10,14 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    !user.owner
+  end
+
+  def destroy?
+    !user.owner
+  end
+
+  def update?
+    !user.owner
   end
 end

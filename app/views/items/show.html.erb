@@ -25,9 +25,3 @@
 <% if policy(@item).edit? %>
   <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
 <% end %>
-
-<!--
-<% if policy(Booking).index? %>
-  <%= link_to 'View All My Bookings', bookings_path %>
-<% end %>
--->
