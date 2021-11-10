@@ -1,9 +1,11 @@
-<%= simple_form_for @item do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :category %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.button :submit %>
-<% end %>
+<div class="form-item">
+  <%= simple_form_for @item do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file%>
+    <%= f.input :category %>
+    <%= f.input :price %>
+    <%= f.input :address %>
+    <%= f.submit class:"btn btn-ghost"%>
+  <% end %>
+</div>
