@@ -115,3 +115,17 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.main-container {
+  display: flex;
+}
+
+#map {
+  height: 100hv;
+  position: sticky;
+  top: 1px;
+}
+
+.cards {
+  flex-grow: 1;
+}
