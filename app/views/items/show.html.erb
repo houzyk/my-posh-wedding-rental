@@ -15,9 +15,9 @@
     <div class="card-item">
       <p><strong>Category:</strong> <%=@item.category.name %> </p>
       <p><strong>Size:</strong> XL</p>
-      <p><strong>Availability:</strong> Yes</p>
+      <p><strong>Availability:</strong> Yes </p>
       <p><strong>Price:</strong> Rs. <%=@item.price %> </p>
-      <p><strong>Rating:</strong> 4/5 </p>
+      <p><strong>Rating:</strong> <%=@item.rating %> </p>
       <p><strong>Owner:</strong> <%="#{@item.user.first_name} #{@item.user.last_name}"%> </p>
     </div>
   </div>
