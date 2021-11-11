@@ -5,6 +5,7 @@
 
 // External imports
 import "bootstrap";
+import "select2";
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -12,11 +13,15 @@ import "channels"
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initSelect2 } from "../plugins/init_select2";
 
-
+$(document).ready(function () {
+  $(".js-example-basic-single").select2();
+});
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
+  initSelect2();
   initMapbox();
   loadDynamicBannerText();
 });

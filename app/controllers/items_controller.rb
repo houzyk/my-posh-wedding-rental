@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
 
   def index
     @items = policy_scope(Item)
-    # geocode
+    # * WITH PG
+      # @items = @items.global_search(params[:query])
+    @items = @items.where(name: params[:query]) if params[:query].present?
     @markers = @items.geocoded.map do |item|
       {
         lat: item.latitude,
@@ -57,6 +59,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :category, :photo, :address)
+    params.require(:item).permit(:name, :description, :price, :category_id, :photo, :address)
   end
 end

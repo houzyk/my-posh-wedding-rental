@@ -4,15 +4,22 @@
     <p>
       <span id="banner-typed-text"></span>
     </p>
-    <%= link_to 'See our products', items_path, class: "btn btn-flat" %>
+    <%= form_tag items_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an Item"
+      %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
     <%# This will be replaced by a search bar afterwards %>
   </div>
 </div>
 
 <div class="cards home-cards">
   <% @categories.each do |category| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(<%= category[:url] %>)">
-      <%= category[:name] %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(<%= category.url %>)">
+      <%= category.name %>
     </div>
   <% end %>
 </div>
