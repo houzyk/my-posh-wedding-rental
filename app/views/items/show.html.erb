@@ -1,4 +1,4 @@
-<div style="height: 75vh;"">
+<div>
   <div class="text-title">
     <h2><%= @item.name %></h2>
     <p><%= @item.description %></p>
@@ -6,19 +6,20 @@
 
   <div class="cards-item">
     <% if @item.photo.attached? %>
-      <div class="card-image" style="border-radius:5px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @item.photo.key%>')">
+      <div class="card-image" style="border-radius:5px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @item.photo.key, :crop => "fit" %>')">
       </div>
     <%else%>
       <div class="card-image" style="border-radius:5px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
       </div>
     <%end%>
     <div class="card-item">
-      <br>
       <p><strong>Category:</strong> <%=@item.category.name %> </p>
-      <p><strong>Price:</strong> Rs. <%=@item.price %> </p>
-      <p><strong>Rating:</strong> <%=@item.rating %> </p>
-      <p><strong>Owner:</strong> <%="#{@item.user.first_name} #{@item.user.last_name}"%> </p>
       <br>
+      <p><strong>Price:</strong> Rs. <%=@item.price %> </p>
+      <br>
+      <p><strong>Rating:</strong> <%=@item.rating %> </p>
+      <br>
+      <p><strong>Owner:</strong> <%="#{@item.user.first_name} #{@item.user.last_name}"%> </p>
     </div>
   </div>
 

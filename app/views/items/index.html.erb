@@ -12,7 +12,7 @@
     <% @items.each do |item| %>
       <div class="card-trip">
         <%if item.photo.attached? %>
-          <%= cl_image_tag item.photo.key, height: 500, width: 400, crop: :thumb, gravity: :face %>
+          <%= cl_image_tag item.photo.key, height: 500, width: 400, :crop => "fit" %>
         <%else%>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
         <%end%>
