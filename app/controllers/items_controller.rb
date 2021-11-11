@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = policy_scope(Item)
+    # * WITH PG
+      # @items = @items.global_search(params[:query])
     @items = @items.where(name: params[:query]) if params[:query].present?
     @markers = @items.geocoded.map do |item|
       {
