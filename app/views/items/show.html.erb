@@ -24,11 +24,11 @@
 
   <%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
 
-  <% if policy(Booking).new? %>
+  <% if user_signed_in? && policy(Booking).new? %>
     <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
   <% end %>
 
-  <% if policy(@item).edit? %>
+  <% if user_signed_in? && policy(@item).edit? %>
     <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
   <% end %>
 </div>
