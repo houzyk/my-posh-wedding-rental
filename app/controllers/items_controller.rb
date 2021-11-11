@@ -6,8 +6,10 @@ class ItemsController < ApplicationController
   def index
     @items = policy_scope(Item)
     # * WITH PG
+    params[:query] = params[:format] if params[:format].present?
       # @items = @items.global_search(params[:query])
-    @items = @items.where(name: params[:query]) if params[:query].present?
+    @items = @items.global_search(params[:query]) if params[:query].present?
+      # @items = @items.filter_by_category(params[:category]) if params[:category].present?
     @markers = @items.geocoded.map do |item|
       {
         lat: item.latitude,
@@ -23,6 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    if @item.reviews.empty?
+      @ratings = 0
+    else
+      @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
+    end
   end
 
   def create
@@ -44,9 +52,6 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to item_path(@item)
   end
-
-  # def search
-  # end
 
   private
 

@@ -1,35 +1,50 @@
-<div>
-  <div class="text-title">
-    <h2><%= @item.name %></h2>
-    <p><%= @item.description %></p>
-  </div>
+<div class="text-title">
+  <h2><%= @item.name %></h2>
+  <p><%= @item.description %></p>
+</div>
 
-  <div class="cards-item">
-    <% if @item.photo.attached? %>
-      <div class="card-image" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key, :crop => "fit" %>')">
+<div class="cards-item">
+  <% if @item.photo.attached? %>
+    <div class="card-image" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key, :crop => "fit" %>')">
       </div>
-    <%else%>
-      <div class="card-image" style="border-radius:5px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
-      </div>
-    <%end%>
-    <div class="card-item">
-      <p><strong>Category:</strong> <%=@item.category.name %> </p>
-      <br>
-      <p><strong>Price:</strong> Rs. <%=@item.price %> </p>
-      <br>
-      <p><strong>Rating:</strong> <%=@item.rating %> </p>
-      <br>
-      <p><strong>Owner:</strong> <%="#{@item.user.first_name} #{@item.user.last_name}"%> </p>
     </div>
+  <%else%>
+    <div class="card-image" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
+    </div>
+  <%end%>
+  <div class="card-item">
+    <p><strong>Category:</strong> <%= @item.category.name %> </p>
+      <br>
+      <p><strong>Price:</strong> Rs. <%= @item.price %> </p>
+      <br>
+      <p><strong>Rating:</strong> <%= @ratings.round %> </p>
+      <br>
+      <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
   </div>
+</div>
 
-  <%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
+<%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
 
-  <% if user_signed_in? && policy(Booking).new? %>
-    <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
+<% if user_signed_in? && policy(Booking).new? %>
+  <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
+<% end %>
+
+<% if user_signed_in? && policy(@item).edit? %>
+  <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
+<% end %>
+
+<% if user_signed_in? && policy(Review).create? %>
+  <% if @item.reviews.blank? %>
+    Be the first to leave a review for <%= @item.name %>
+  <% else %>
+    <%= @item.reviews.count %> reviews for <%= @item.name %>
   <% end %>
+    <%= render 'shared/reviewform' %>
+<% end %>
 
-  <% if user_signed_in? && policy(@item).edit? %>
-    <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
+<div id="reviews">
+  <% @item.reviews.each do |review| %>
+      <p><%= review.comment %></p>
+      <p><%= review.rating %></p>
   <% end %>
 </div>
