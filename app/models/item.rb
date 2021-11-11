@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many :bookings
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :bookings
   has_one_attached :photo
   geocoded_by :address
