@@ -43,15 +43,13 @@
 <br>
 
 <div class="col-10 mx-auto">
-  <% if user_signed_in? && policy(Review).create? %>
+
     <% if @item.reviews.blank? %>
       <h3>Nobody has yet reviewed <strong><%= @item.name %></strong></h3>
     <% else %>
-      <h3><%= @item.reviews.count %> reviews for <%= @item.name %></h3>
+      <h3><%= pluralize @item.reviews.size, "review" %> for <%= @item.name %></h3>
     <% end %>
-  <% else %>
-    <h3><%= @item.reviews.count %> review for <%= @item.name %></h3>
-  <% end %>
+  
 
     <div class="d-flex mt-4 mb-4">
       <div class="reviews col-6">
