@@ -11,8 +11,11 @@ class Item < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
 include PgSearch::Model
-  pg_search_scope :search_by_name_and_description,
+  pg_search_scope :global_search,
     against: [:name, :description],
+    associated_against: {
+      category: [:name]
+    },
     using: {
       tsearch: { prefix: true }
     }
