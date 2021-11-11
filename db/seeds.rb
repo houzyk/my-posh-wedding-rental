@@ -52,23 +52,23 @@ item4 = Item.new(name: 'Indian Traditional', description: 'Sherwanis and sarees'
 item4.photo.attach(io: file4, filename: 'dress', content_type: 'image')
 item4.save
 
-file5 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item5 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Tamarin, Mauritius')
+file5 = URI.open('https://media.istockphoto.com/photos/modern-muslim-bride-and-groom-picture-id1211282449?b=1&k=20&m=1211282449&s=170667a&w=0&h=CYafRnE1ah_SwCjRnXCs9WDQbFO9cQNvkAXUh7h_U6o=')
+item5 = Item.new(name: 'Muslim Traditional', description: 'White dress and kurta', category: Category.find_by(name: "Muslim Traditional"), price: 375.0, rating: 4.5, user: User.first, address: 'Tamarin, Mauritius')
 item5.photo.attach(io: file5, filename: 'dress', content_type: 'image')
 item5.save
 
-file6 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item6 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'St-Pierre, Mauritius')
+file6 = URI.open('https://media.istockphoto.com/photos/three-young-men-wearing-tuxedos-picture-id639247682?b=1&k=20&m=639247682&s=170667a&w=0&h=ndZz32_JJQLExqGzosHupIQnPZTDsMZj6oUvf7OonGg=')
+item6 = Item.new(name: 'Groomsman', description: 'Black tuxedo', category: Category.find_by(name: "Groomsman"), price: 400.0, rating: 4.9, user: User.first, address: 'St-Pierre, Mauritius')
 item6.photo.attach(io: file6, filename: 'dress', content_type: 'image')
 item6.save
 
-file7 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item7 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Goodlands, Mauritius')
+file7 = URI.open('https://media.istockphoto.com/photos/jewelry-picture-id118199633?b=1&k=20&m=118199633&s=170667a&w=0&h=adiDUP_6maGKPKpmX0SDGSGxr9h5gr85qyj1fZ8vT2E=')
+item7 = Item.new(name: 'Jewellery', description: 'Rings, necklaces and bracelets', category: Category.find_by(name: "Jewellery"), price: 650.0, rating: 4.7, user: User.first, address: 'Goodlands, Mauritius')
 item7.photo.attach(io: file7, filename: 'dress', content_type: 'image')
 item7.save
 
-file8 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item8 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Mahebourg, Mauritius')
+file8 = URI.open('https://media.istockphoto.com/photos/back-of-bride-picture-id493633372?b=1&k=20&m=493633372&s=170667a&w=0&h=J0SZEffFL9vkxQaxl80ruMWkFQowvxS2WTw7RQvhmWo=')
+item8 = Item.new(name: 'Veils', description: 'White bridal veil', category: Category.find_by(name: "Veils"), price: 200.0, rating: 4.5, user: User.first, address: 'Mahebourg, Mauritius')
 item8.photo.attach(io: file8, filename: 'dress', content_type: 'image')
 item8.save
 
