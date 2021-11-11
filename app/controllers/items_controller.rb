@@ -26,7 +26,12 @@ class ItemsController < ApplicationController
 
   def show
     @review = Review.new
-    @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
+    if @item.reviews.empty?
+      @ratings = 0
+    else
+      @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
+    end
+    @reviews = policy_scope(Review)
   end
 
   def create
