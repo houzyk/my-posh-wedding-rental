@@ -5,11 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# require "open-uri"
+require "open-uri"
 
 puts 'Cleaning database...'
 Booking.destroy_all
 Item.destroy_all
+=begin
 Category.destroy_all
 puts 'Creating categories...'
 categories = [
@@ -28,8 +29,47 @@ categories.each do |category|
 end
 
 puts "Created #{Category.count} categories"
+=end
+puts 'Starting seed'
 
-# file = URI.open('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-# item = Item.new(name: 'Wedding Dress Two', description: 'White dress for ladies', category: 'Dress', price: 250.0, rating: 4.5, user: User.first)
-# item.photo.attach(io: file, filename: 'dress', content_type: 'image')
-# item.save
+file = URI.open('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item = Item.new(name: 'Wedding Dress', description: 'White dress for ladies', category: Category.find_by(name: "Wedding Dress"), price: 250.0, rating: 4.5, user: User.first, address: 'Vacoas, Mauritius')
+item.photo.attach(io: file, filename: 'dress', content_type: 'image')
+item.save
+
+file2 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item2 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 350.0, rating: 4.8, user: User.first, address: 'Flacq, Mauritius')
+item2.photo.attach(io: file2, filename: 'dress', content_type: 'image')
+item2.save
+
+file3 = URI.open('https://media.istockphoto.com/photos/beautiful-bridesmaids-in-pink-dresses-posing-and-looking-to-camera-at-picture-id925078924?b=1&k=20&m=925078924&s=170667a&w=0&h=RuTpsEu9gHsDRrufR68HL4MvXngA6nUcuuS-X9NYjUQ=')
+item3 = Item.new(name: 'Bridesmaid', description: 'Pink bridesmaid dress', category: Category.find_by(name: "Bridesmaid"), price: 200.0, rating: 4.3, user: User.first, address: 'Port-Louis, Mauritius')
+item3.photo.attach(io: file3, filename: 'dress', content_type: 'image')
+item3.save
+
+file4 = URI.open('https://media.istockphoto.com/photos/man-and-woman-couple-looking-at-camera-sitting-on-sofa-pune-picture-id1024630156?b=1&k=20&m=1024630156&s=170667a&w=0&h=_OPgGLPFsXxxB4m5AoiiblPZtdOKcvJA4iHK9WywBXg=')
+item4 = Item.new(name: 'Indian Traditional', description: 'Sherwanis and sarees', category: Category.find_by(name: "Indian Traditional"), price: 500.0, rating: 4.8, user: User.first, address: 'Rose-Hill, Mauritius')
+item4.photo.attach(io: file4, filename: 'dress', content_type: 'image')
+item4.save
+
+file5 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item5 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Tamarin, Mauritius')
+item5.photo.attach(io: file5, filename: 'dress', content_type: 'image')
+item5.save
+
+file6 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item6 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'St-Pierre, Mauritius')
+item6.photo.attach(io: file6, filename: 'dress', content_type: 'image')
+item6.save
+
+file7 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item7 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Goodlands, Mauritius')
+item7.photo.attach(io: file7, filename: 'dress', content_type: 'image')
+item7.save
+
+file8 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+item8 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 250.0, rating: 4.5, user: User.first, address: 'Mahebourg, Mauritius')
+item8.photo.attach(io: file8, filename: 'dress', content_type: 'image')
+item8.save
+
+puts 'Database seeded'
