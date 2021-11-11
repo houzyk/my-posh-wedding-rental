@@ -25,6 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    if @item.reviews.empty?
+      @ratings = 0
+    else
+      @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
+    end
   end
 
   def create
@@ -46,9 +52,6 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to item_path(@item)
   end
-
-  # def search
-  # end
 
   private
 
