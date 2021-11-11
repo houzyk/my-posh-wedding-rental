@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
 
   def show
     @review = Review.new
+    @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
   end
 
   def create
