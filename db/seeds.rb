@@ -10,6 +10,7 @@ require "open-uri"
 puts 'Cleaning database...'
 Booking.destroy_all
 Item.destroy_all
+# ! DO NOT DELETE THE COMMENTS FROM HERE TILL ....
 =begin
 Category.destroy_all
 puts 'Creating categories...'
@@ -30,46 +31,47 @@ end
 
 puts "Created #{Category.count} categories"
 =end
+# ! ... HERE
 puts 'Starting seed'
 
 file = URI.open('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item = Item.new(name: 'Wedding Dress', description: 'White dress for ladies', category: Category.find_by(name: "Wedding Dress"), price: 250.0, user: User.first, address: 'Vacoas, Mauritius')
+item = Item.new(name: 'Simple but Amazing Dress', description: 'White dress for ladies and for any wedding', category: Category.find_by(name: "Wedding Dress"), price: 250.0, user: User.first, address: 'Vacoas, Mauritius')
 item.photo.attach(io: file, filename: 'dress', content_type: 'image')
 item.save
-
+puts 'Item created'
 file2 = URI.open('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VpdHN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item2 = Item.new(name: 'Suits', description: 'Black suit', category: Category.find_by(name: "Suits"), price: 350.0, user: User.first, address: 'Flacq, Mauritius')
+item2 = Item.new(name: 'Slim Fit Signature Suit', description: 'Black suit with soft interior', category: Category.find_by(name: "Suits"), price: 350.0, user: User.first, address: 'Flacq, Mauritius')
 item2.photo.attach(io: file2, filename: 'suits', content_type: 'image')
 item2.save
-
+puts 'Item created'
 file3 = URI.open('https://media.istockphoto.com/photos/beautiful-bridesmaids-in-pink-dresses-posing-and-looking-to-camera-at-picture-id925078924?b=1&k=20&m=925078924&s=170667a&w=0&h=RuTpsEu9gHsDRrufR68HL4MvXngA6nUcuuS-X9NYjUQ=')
-item3 = Item.new(name: 'Bridesmaid', description: 'Pink bridesmaid dress', category: Category.find_by(name: "Bridesmaid"), price: 200.0, user: User.first, address: 'Port-Louis, Mauritius')
+item3 = Item.new(name: 'Cinq à Sept Zola Dress', description: 'Pink bridesmaid dress', category: Category.find_by(name: "Bridesmaid"), price: 200.0, user: User.first, address: 'Port-Louis, Mauritius')
 item3.photo.attach(io: file3, filename: 'bridesmaid', content_type: 'image')
 item3.save
-
+puts 'Item created'
 file4 = URI.open('https://media.istockphoto.com/photos/man-and-woman-couple-looking-at-camera-sitting-on-sofa-pune-picture-id1024630156?b=1&k=20&m=1024630156&s=170667a&w=0&h=_OPgGLPFsXxxB4m5AoiiblPZtdOKcvJA4iHK9WywBXg=')
-item4 = Item.new(name: 'Indian Traditional', description: 'Sherwanis and sarees', category: Category.find_by(name: "Indian Traditional"), price: 500.0, user: User.first, address: 'Rose-Hill, Mauritius')
+item4 = Item.new(name: 'Printed Art Silk Dhoti Sherwani', description: 'A must have!', category: Category.find_by(name: "Indian Traditional"), price: 500.0, user: User.first, address: 'Rose-Hill, Mauritius')
 item4.photo.attach(io: file4, filename: 'indian', content_type: 'image')
 item4.save
-
+puts 'Item created'
 file5 = URI.open('https://media.istockphoto.com/photos/modern-muslim-bride-and-groom-picture-id1211282449?b=1&k=20&m=1211282449&s=170667a&w=0&h=CYafRnE1ah_SwCjRnXCs9WDQbFO9cQNvkAXUh7h_U6o=')
-item5 = Item.new(name: 'Muslim Traditional', description: 'White dress and kurta', category: Category.find_by(name: "Muslim Traditional"), price: 375.0, user: User.first, address: 'Tamarin, Mauritius')
+item5 = Item.new(name: 'Light Kurta', description: 'White kurta. Hand-made.', category: Category.find_by(name: "Muslim Traditional"), price: 375.0, user: User.first, address: 'Tamarin, Mauritius')
 item5.photo.attach(io: file5, filename: 'muslim', content_type: 'image')
 item5.save
-
+puts 'Item created'
 file6 = URI.open('https://media.istockphoto.com/photos/three-young-men-wearing-tuxedos-picture-id639247682?b=1&k=20&m=639247682&s=170667a&w=0&h=ndZz32_JJQLExqGzosHupIQnPZTDsMZj6oUvf7OonGg=')
-item6 = Item.new(name: 'Groomsman', description: 'Black tuxedo', category: Category.find_by(name: "Groomsman"), price: 400.0, user: User.first, address: 'St-Pierre, Mauritius')
+item6 = Item.new(name: 'Classic Suit', description: 'Black tuxedo. Still new!', category: Category.find_by(name: "Groomsman"), price: 400.0, user: User.first, address: 'St-Pierre, Mauritius')
 item6.photo.attach(io: file6, filename: 'groomsman', content_type: 'image')
 item6.save
-
+puts 'Item created'
 file7 = URI.open('https://media.istockphoto.com/photos/jewelry-picture-id118199633?b=1&k=20&m=118199633&s=170667a&w=0&h=adiDUP_6maGKPKpmX0SDGSGxr9h5gr85qyj1fZ8vT2E=')
-item7 = Item.new(name: 'Jewellery', description: 'Rings, necklaces and bracelets', category: Category.find_by(name: "Jewellery"), price: 650.0, user: User.first, address: 'Goodlands, Mauritius')
+item7 = Item.new(name: 'Gold Plated Rings', description: 'Looks like real gold', category: Category.find_by(name: "Jewellery"), price: 650.0, user: User.first, address: 'Goodlands, Mauritius')
 item7.photo.attach(io: file7, filename: 'jewellery', content_type: 'image')
 item7.save
-
+puts 'Item created'
 file8 = URI.open('https://media.istockphoto.com/photos/back-of-bride-picture-id493633372?b=1&k=20&m=493633372&s=170667a&w=0&h=J0SZEffFL9vkxQaxl80ruMWkFQowvxS2WTw7RQvhmWo=')
-item8 = Item.new(name: 'Veils', description: 'White bridal veil', category: Category.find_by(name: "Veils"), price: 200.0, user: User.first, address: 'Mahebourg, Mauritius')
+item8 = Item.new(name: 'Luxury Veil', description: 'White bridal veil made from quality silk', category: Category.find_by(name: "Veils"), price: 200.0, user: User.first, address: 'Mahebourg, Mauritius')
 item8.photo.attach(io: file8, filename: 'veils', content_type: 'image')
 item8.save
-
+puts 'Item created'
 puts 'Database seeded'
