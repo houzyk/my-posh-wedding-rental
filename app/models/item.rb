@@ -1,8 +1,9 @@
 class Item < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-  validates :description, :category, presence: true
+  validates :name, presence: true
+  validates :description, presence: true
   validates :price, presence: true, numericality: true
   belongs_to :user
+  belongs_to :category
   has_many :bookings
   has_many :users, through: :bookings
   has_one_attached :photo
