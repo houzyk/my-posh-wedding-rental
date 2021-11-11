@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     else
       render 'items/show'
     end
+    authorize @review
   end
 
   private

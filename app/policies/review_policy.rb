@@ -4,4 +4,8 @@ class ReviewPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    !user.owner
+  end
 end
