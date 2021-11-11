@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def create
@@ -46,9 +47,6 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to item_path(@item)
   end
-
-  # def search
-  # end
 
   private
 

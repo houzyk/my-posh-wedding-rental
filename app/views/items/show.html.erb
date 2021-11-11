@@ -1,4 +1,4 @@
-<div style="height: 75vh;"">
+<div>
   <div class="text-title">
     <h2><%= @item.name %></h2>
     <p><%= @item.description %></p>
@@ -17,7 +17,7 @@
       <p><strong>Size:</strong> XL</p>
       <p><strong>Availability:</strong> Yes </p>
       <p><strong>Price:</strong> Rs. <%=@item.price %> </p>
-      <p><strong>Rating:</strong> <%=@item.rating %> </p>
+      <p><strong>Rating:</strong> <%=@item.reviews %> </p>
       <p><strong>Owner:</strong> <%="#{@item.user.first_name} #{@item.user.last_name}"%> </p>
     </div>
   </div>
@@ -30,5 +30,9 @@
 
   <% if user_signed_in? && policy(@item).edit? %>
     <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
+  <% end %>
+
+  <% if user_signed_in? && policy(Review).create? %>
+    <%= render 'shared/reviewform' %>
   <% end %>
 </div>
