@@ -16,7 +16,10 @@
     <% else %>
       <p><strong> Rental Price:</strong> Rs. <%= @item.price %> /Day </p>
     <% end %>
-    <p><strong>Rating:</strong> <%= @ratings.round %> </p>
+    <p><strong>Rating:</strong>
+      <% @ratings.round.times do %>
+            <span><i class="fas fa-star"></i></span>
+          <% end %></p>
     <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
 
     <%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
@@ -39,21 +42,40 @@
 <hr>
 <br>
 
-
-<% if user_signed_in? && policy(Review).create? %>
-  <% if @item.reviews.blank? %>
-    <h3>Be the first to leave a review for <%= @item.name %></h3>
+<div class="col-10 mx-auto">
+  <% if user_signed_in? && policy(Review).create? %>
+    <% if @item.reviews.blank? %>
+      <h3>Nobody has yet reviewed <strong><%= @item.name %></strong></h3>
+    <% else %>
+      <h3><%= @item.reviews.count %> reviews for <%= @item.name %></h3>
+    <% end %>
   <% else %>
-    <h3><%= @item.reviews.count %> reviews for <%= @item.name %></h3>
+    <h3><%= @item.reviews.count %> review for <%= @item.name %></h3>
   <% end %>
-    <%= render 'shared/reviewform' %>
-<% else %>
-  <h3><%= @item.reviews.count %> review for <%= @item.name %></h3>
-<% end %>
 
-<div id="reviews">
-  <% @item.reviews.each do |review| %>
-      <p><%= review.comment %></p>
-      <p><%= review.rating %></p>
-  <% end %>
+    <div class="d-flex mt-4 mb-4">
+      <div class="reviews col-6">
+        <% @item.reviews.each do |review| %>
+          <%= review.comment %>
+          <br>
+          <% review.rating.times do %>
+            <span><i class="fas fa-star"></i></span>
+          <% end %>
+          <hr>
+        <% end %>
+      </div>
+      <div class="review-form col-6">
+
+        <% if user_signed_in? && policy(Review).create? %>
+          <% if @item.reviews.blank? %>
+            <h3>Be the first to leave a review</h3>
+          <% else %>
+            <h3>Add a review</h3>
+          <% end %>
+          <%= render 'shared/reviewform' %>
+        <% end %>
+
+      </div>
+    </div>
+
 </div>
