@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
     else
       @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
     end
-    @reviews = policy_scope(Review)
   end
 
   def create

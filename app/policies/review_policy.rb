@@ -8,8 +8,4 @@ class ReviewPolicy < ApplicationPolicy
   def create?
     !user.owner
   end
-
-  def show?
-    true
-  end
 end
