@@ -1,45 +1,54 @@
 <div class="text-title">
-  <h2><%= @item.name %></h2>
-  <p><%= @item.description %></p>
+  <br>
+  <h2><strong><%= @item.name %></strong></h2>
+  <hr>
 </div>
 
 <div class="cards-item">
-  <% if @item.photo.attached? %>
-    <div class="card-image" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key, :crop => "fit" %>')">
-      </div>
-    </div>
-  <%else%>
-    <div class="card-image" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">
-    </div>
-  <%end%>
   <div class="card-item">
+    <p><strong>Description:</strong></p>
+    <p class="text-justify mx-4"> <%= @item.description %> </p>
     <p><strong>Category:</strong> <%= @item.category.name %> </p>
-      <br>
-      <p><strong>Price:</strong> Rs. <%= @item.price %> </p>
-      <br>
-      <p><strong>Rating:</strong> <%= @ratings.round %> </p>
-      <br>
-      <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
-  </div>
+    <% if @item.price % 1 == 0 %>
+      <p><strong> Rental Price:</strong> Rs. <%= @item.price.round %>.00 /Day </p>
+    <% elsif (@item.price * 10) % 1 == 0 %>
+      <p><strong> Rental Price:</strong> Rs. <%= @item.price %>0 /Day</p>
+    <% else %>
+      <p><strong> Rental Price:</strong> Rs. <%= @item.price %> /Day </p>
+    <% end %>
+    <p><strong>Rating:</strong> <%= @ratings.round %> </p>
+    <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
+
+    <%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
+
+  <% if user_signed_in? && policy(Booking).new? %>
+    <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
+  <% end %>
+
+  <% if user_signed_in? && policy(@item).edit? %>
+    <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
+  <% end %>
+    </div>
+    <% if @item.photo.attached? %>
+        <div class="card-image" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key, :crop => "fit" %>')"></div>
+    <%else%>
+      <div class="card-image" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
+    <%end%>
 </div>
+<br>
+<hr>
+<br>
 
-<%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
-
-<% if user_signed_in? && policy(Booking).new? %>
-  <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
-<% end %>
-
-<% if user_signed_in? && policy(@item).edit? %>
-  <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
-<% end %>
 
 <% if user_signed_in? && policy(Review).create? %>
   <% if @item.reviews.blank? %>
-    Be the first to leave a review for <%= @item.name %>
+    <h3>Be the first to leave a review for <%= @item.name %></h3>
   <% else %>
-    <%= @item.reviews.count %> reviews for <%= @item.name %>
+    <h3><%= @item.reviews.count %> reviews for <%= @item.name %></h3>
   <% end %>
     <%= render 'shared/reviewform' %>
+<% else %>
+  <h3><%= @item.reviews.count %> review for <%= @item.name %></h3>
 <% end %>
 
 <div id="reviews">
