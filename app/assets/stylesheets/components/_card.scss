@@ -89,14 +89,17 @@
   margin: 16px;
   background-size: cover;
   background-position: center;
+  height: 400px;
+  margin-bottom: 40px;
 }
 
 .card-item {
-  padding: 20px;
+  padding: 30px;
 }
 
 .card-image {
   background-size: cover;
+  background-position: center;
 }
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
