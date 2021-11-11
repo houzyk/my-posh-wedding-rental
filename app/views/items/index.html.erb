@@ -18,7 +18,7 @@
         <%end%>
         <div class="card-trip-infos">
           <div>
-            <h2><%= item.name%> <span class="item-category">#<%= item.category%></span></h2>
+            <h2><%= item.name%> <span class="item-category">#<%= item.category.name%></span></h2>
 
             <% if item.description.size > 40 %>
               <p><%= item.description.first(40)%>...</p>
