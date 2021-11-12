@@ -8,14 +8,15 @@
 }
 .navbar-lewagon .navbar-brand{
   span{
-    font-family: 'Courgette', cursive;
+    font-family: 'Courgette';
     font-weight: bold;
     font-size: 30px;
+    color: #FF5964;
   }
-  img {
-    border: 5px solid gold;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
-    width: 80px;
-    padding: 10px;
-  }
+  // img {
+  //   border: 5px solid gold;
+  //   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  //   width: 80px;
+  //   padding: 10px;
+  // }
 }
