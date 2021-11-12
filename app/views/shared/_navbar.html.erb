@@ -24,6 +24,10 @@
         </li>
       <%else%>
         <li class="nav-item">
+              <i class="fas fa-shopping-cart nav-link" data-toggle="modal" data-target="#bookingModal"></i>
+        </li>
+
+        <li class="nav-item">
           <% if policy(Item).create? %>
             <%= link_to "New item", new_item_path, class: "nav-link" %>
           <% end %>
@@ -47,3 +51,6 @@
     </ul>
   </div>
 </div>
+
+
+<%= render 'shared/modalbooking' %>

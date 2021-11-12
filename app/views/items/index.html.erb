@@ -1,20 +1,24 @@
-<% if @items.size == 0 %>
-  <h2>Sorry, no items nearby...</h2>
-<% elsif @items.size == 1 %>
-  <h2>You have 1 item ready for rent, be quick</h2>
-<% else %>
-  <h2>There are <%= @items.size %> wedding items ready for rental</h2>
-<% end %>
-<%= form_tag items_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find an Item"
-  %>
-  <%= submit_tag "Search", class: "btn btn-flat" %>
-<% end %>
+<div class="m-4">
+  <% if @items.size == 0 %>
+    <h2>Sorry, no items nearby...</h2>
+  <% elsif @items.size == 1 %>
+    <h2>You have 1 item ready for rent, be quick</h2>
+  <% else %>
+    <h2>There are <%= @items.size %> wedding items ready for rental</h2>
+  <% end %>
+  <%= form_tag items_path,class:"form-inline my-4", method: :get do %>
+    <div class="row w-50">
+        <%= submit_tag "Search", class: "btn btn-flat col-2" %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "col",
+          placeholder: "Find an Item"
+        %>
+    </div>
+  <% end %>
+</div>
 
-<div class="index-display">
+<div class="index-display mx-4">
   <div class="cards">
     <% @items.each do |item| %>
       <div class="card-trip">
