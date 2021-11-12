@@ -30,7 +30,7 @@
               <p><strong class="fas fa-comment"></strong> <%=booking.comment%></p>
             </div>
             <%= link_to "Edit This Booking", edit_booking_path(booking), class: "btn btn-info edit-book" %>
-            <%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger delete-book" %>
+            <%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger delete-book", remote:true %>
           </div>
         <% end %>
         <hr>
