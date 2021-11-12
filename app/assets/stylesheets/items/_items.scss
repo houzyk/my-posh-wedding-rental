@@ -1,7 +1,7 @@
 .index-display{
   display: flex;
   .cards{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     width: 60%;
   }
   .card-trip{
@@ -9,13 +9,11 @@
   }
   #map{
     position: sticky;
-    top: 230px;
+    top: 190px;
   }
 }
 
 .items-top{
   position: sticky;
-  top: 70px;
-  background-color: rgb(241, 241, 241);
-  margin: 0 35px;
+  top: 100px;
 }
