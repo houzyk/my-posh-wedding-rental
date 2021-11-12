@@ -110,7 +110,7 @@
       </div>
       <div class="modal-body" style="height:80vh">
         <% if @item.photo.attached? %>
-          <div class="" style="border-radius:5px; height:100%; background-image: url('<%= cl_image_path @item.photo.key, :background=>"white", :gravity=>"auto", :height=>800, :width=>800, :crop=>"fill_pad" %>')"></div>
+          <div class="" style="border-radius:5px; height:100%; background-image: url('<%= cl_image_path @item.photo.key, :background=>"transparent", :gravity=>"auto", :height=>800, :width=>800, :crop=>"fill_pad" %>')"></div>
         <%else%>
           <div class="" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
         <%end%>
