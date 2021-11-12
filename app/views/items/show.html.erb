@@ -17,9 +17,14 @@
       <p><strong> Rental Price:</strong> Rs. <%= @item.price %> /Day </p>
     <% end %>
     <p><strong>Rating:</strong>
-      <% @ratings.round.times do %>
-            <span><i class="fas fa-star"></i></span>
-          <% end %></p>
+
+      <% if @ratings.present? %>
+        <% @ratings.round.times do %>
+          <span><i class="fas fa-star"></i></span>
+        <% end %>
+      <% end %>
+    </p>
+
     <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
 
 
@@ -62,7 +67,7 @@
           <hr>
         <% end %>
       </div>
-      <div class="review-form col-6">
+      <div class="review-form col-6" id="review-form">
 
         <% if user_signed_in? && policy(Review).create? %>
           <% if @item.reviews.blank? %>

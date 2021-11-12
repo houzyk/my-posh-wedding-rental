@@ -15,9 +15,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { initSelect2 } from "../plugins/init_select2";
 
-$(document).ready(function () {
-  $(".js-example-basic-single").select2();
-});
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
@@ -34,7 +35,3 @@ document.addEventListener('turbolinks:load', () => {
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()

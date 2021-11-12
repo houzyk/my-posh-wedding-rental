@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to item_path(@item , anchor: "review-#{@review.id}")
     else
-      redirect_to item_path(@item)
+      render "items/show"
     end
     authorize @review
   end

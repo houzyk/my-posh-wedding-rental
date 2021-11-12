@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
     @items = policy_scope(Item)
     # * WITH PG
     params[:query] = params[:format] if params[:format].present?
-      # @items = @items.global_search(params[:query])
+
     @items = @items.global_search(params[:query]) if params[:query].present?
-      # @items = @items.filter_by_category(params[:category]) if params[:category].present?
+
     @markers = @items.geocoded.map do |item|
       {
         lat: item.latitude,
@@ -26,10 +26,10 @@ class ItemsController < ApplicationController
 
   def show
     @review = Review.new
-    if @item.reviews.empty?
+    @reviews = @item.reviews
+    if @item.reviews.blank?
       @ratings = 0
     else
-      @reviews = @item.reviews
       @ratings = (@reviews.sum{|review| review.rating }) / @reviews.length.to_f
     end
   end
