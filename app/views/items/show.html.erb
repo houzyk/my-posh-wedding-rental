@@ -1,85 +1,95 @@
-<div class="text-title">
-  <br>
-  <h2><strong><%= @item.name %></strong></h2>
-  <hr>
-</div>
-    <%= link_to 'Go back', items_path, class: "btn-ghost ml-4" %>
-<div class="cards-item">
-  <div class="card-item">
-    <h3><strong>Description:</strong></h3>
-    <p class="text-justify mx-4"> <%= @item.description %> </p>
-    <p><strong>Category:</strong> <%= @item.category.name %> </p>
-    <% if @item.price % 1 == 0 %>
-      <p><strong> Rental Price:</strong> Rs. <%= @item.price.round %>.00 /Day </p>
-    <% elsif (@item.price * 10) % 1 == 0 %>
-      <p><strong> Rental Price:</strong> Rs. <%= @item.price %>0 /Day</p>
-    <% else %>
-      <p><strong> Rental Price:</strong> Rs. <%= @item.price %> /Day </p>
-    <% end %>
-    <p><strong>Rating:</strong>
+<div class="container mt-4">
+  <div class="cards-item">
+    <div class="card-item">
+      <%= link_to items_path do %>
+        <i class="fas fa-arrow-circle-left item-name-show"></i>
+      <%end%>
+      <span class="item-name-show"><strong><%= @item.name %></strong></span>
 
-      <% if @ratings.present? %>
-        <% @ratings.round.times do %>
-          <span><i class="fas fa-star"></i></span>
-        <% end %>
+      <h4><strong>Description</strong></h4>
+      <p> <%= @item.description %> </p>
+
+      <h5><strong>Category</strong></h5>
+      <p> <%= @item.category.name %> </p>
+
+      <% if @item.price % 1 == 0 %>
+        <h5><strong> Rental Price</strong></h5>
+        <p> Rs. <%= @item.price.round %>.00 / day </p>
+      <% elsif (@item.price * 10) % 1 == 0 %>
+        <h5><strong> Rental Price</strong></h5>
+        <p> Rs. <%= @item.price %>0 / day</p>
+      <% else %>
+        <h5><strong> Rental Price</strong></h5>
+        <p> Rs. <%= @item.price %> / day </p>
       <% end %>
-    </p>
 
-    <p><strong>Owner:</strong> <%= "#{@item.user.first_name} #{@item.user.last_name}" %> </p>
+      <h5><strong>Owner</strong></h5>
+      <p> <%= "#{@item.user.first_name} #{@item.user.last_name}"%> </p>
 
-
-
-  <% if user_signed_in? && policy(Booking).new? %>
-    <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn-ghost" %>
-  <% end %>
-  <% if user_signed_in? && policy(@item).edit? %>
-    <%= link_to 'Edit Item', edit_item_path(@item), class: "btn-ghost ml-4" %>
-  <% end %>
-    </div>
-
-    <% if @item.photo.attached? %>
-        <div class="card-image" data-toggle="modal" data-target="#exampleModal" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key,:background=>"white", :gravity=>"auto", :height=>800, :width=>800, :crop=>"fill_pad" %>')"></div>
-    <%else%>
-      <div class="card-image" data-toggle="modal" data-target="#exampleModal" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
-    <%end%>
-</div>
-<br>
-<hr>
-<br>
-
-<div class="col-10 mx-auto">
-
-    <% if @item.reviews.blank? %>
-      <h3>Nobody has yet reviewed <strong><%= @item.name %></strong></h3>
-    <% else %>
-      <h3><%= pluralize @item.reviews.size, "review" %> for <%= @item.name %></h3>
-    <% end %>
-
-
-    <div class="d-flex mt-4 mb-4">
-      <div class="reviews col-6">
-        <% @item.reviews.each do |review| %>
-          <p id="review-<%= review.id %>"><%= review.comment %></p>
-          <br>
-          <% review.rating.times do %>
+      <p>
+        <strong>Rating</strong>
+        <% if @ratings.present? %>
+          <% @ratings.round.times do %>
             <span><i class="fas fa-star"></i></span>
           <% end %>
-          <hr>
         <% end %>
-      </div>
-      <div class="review-form col-6" id="review-form">
+      </p>
 
-        <% if user_signed_in? && policy(Review).create? %>
-          <% if @item.reviews.blank? %>
-            <h3>Be the first to leave a review</h3>
-          <% else %>
-            <h3>Add a review</h3>
+    <% if user_signed_in? && policy(Booking).new? %>
+      <%= link_to 'Add booking', new_item_booking_path(@item), class: "btn btn-success" %>
+    <% end %>
+    <% if user_signed_in? && policy(@item).edit? %>
+      <%= link_to 'Edit Item', edit_item_path(@item), class: "btn btn-flat" %>
+    <% end %>
+      </div>
+
+      <% if @item.photo.attached? %>
+          <div class="card-image" data-toggle="modal" data-target="#exampleModal" style="border-radius:5px; background-image: url('<%= cl_image_path @item.photo.key,:background=>"white", :gravity=>"auto", :height=>800, :width=>800, :crop=>"fill_pad" %>')"></div>
+      <%else%>
+        <div class="card-image" data-toggle="modal" data-target="#exampleModal" style="border-radius:5px; background-image: url(https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
+      <%end%>
+  </div>
+
+  <div class="col-10 mx-auto">
+
+      <% if @item.reviews.blank? %>
+        <%
+=begin%>
+ <h3>Nobody has yet reviewed</h3>
+<%
+=end%>
+      <% else %>
+        <h3><%= pluralize @item.reviews.size, "review" %></h3>
+      <% end %>
+
+
+      <div class="d-flex mt-4 mb-4">
+        <div class="reviews col-6">
+          <% @item.reviews.each do |review| %>
+            <div class="review">
+              <p><%= Time.now.strftime("%B %d, %Y") %></p>
+              <span id="review-<%= review.id %>"><%= review.comment %></span>
+              <% review.rating.times do %>
+                <span><i class="fas fa-star"></i></span>
+              <% end %>
+            </div>
           <% end %>
-          <%= render 'shared/reviewform' %>
-        <% end %>
+        </div>
+        <div class="review-form col-6" id="review-form">
 
+          <% if user_signed_in? && policy(Review).create? %>
+            <% if @item.reviews.blank? %>
+              <h3>Be the first to leave a review</h3>
+            <% else %>
+              <h3>Add a review</h3>
+            <% end %>
+            <%= render 'shared/reviewform' %>
+          <% end %>
+
+        </div>
       </div>
-    </div>
+
+  </div>
 
 </div>
 
@@ -89,7 +99,11 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= @item.name %></h5>
+        <%
+=begin%>
+ <h5 class="modal-title" id="exampleModalLabel"><%= @item.name %></h5>
+<%
+=end%>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
