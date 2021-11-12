@@ -5,8 +5,9 @@
     <%if @bookings.empty?%>
       <div class="card-product-none">
         <div class="card-product-infos">
-          <h2>Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+          <h2 class="text-center"><i class="fas fa-sad-tear"></i></h2>
+          <p class="text-center">You don't have any bookings...</p>
+          <p class="text-center">Let's fix this by booking <strong><%= link_to "our products", items_path %></strong> .</p>
         </div>
       </div>
     <%else%>

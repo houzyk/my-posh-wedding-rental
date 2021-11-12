@@ -224,16 +224,19 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
 }
 
 .card-product-none h2 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 300px;
+  color: #3BA99C;
   margin: 0;
 }
 
 .card-product-none p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
