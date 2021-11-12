@@ -51,16 +51,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Your payment for the following items has been proceeded:
-        <hr>
-        <% @bookings.each do |booking| %>
-          <p><%= booking.item.name %></p>
-        <% end %>
+      <div class="modal-body text-center">
+        <i class="fas fa-check-circle text-success" style="font-size:5rem"></i>
+        <h3>Your request has been proceeded successfully</h3>
+        <p>Thank you for your billing.</p>
       </div>
 
       <div class="modal-footer">
-        <%= link_to 'Go Back to Home Page', root_path, class:'btn btn-secondary' %>
+        <%= link_to 'Go Back to Home Page', root_path, class:'btn btn-success btn-block rounded-pill' %>
       </div>
     </div>
   </div>
