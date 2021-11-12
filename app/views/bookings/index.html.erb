@@ -1,27 +1,27 @@
-<h1 class="text-center mt-4 py-3">All my bookings</h1>
-
-<ol>
-  <% @bookings.each do |booking| %>
-    <li class="tabs">
-      <p class="tabs-item"><%= booking.comment %></p>
-      <p class="tabs-item"><%= booking.start %></p>
-      <p class="tabs-item"><%= booking.return %></p>
-      <p class="tabs-item" id="fourth-child"><%= link_to "Edit This Booking", edit_booking_path(booking), class: "btn-ghost" %></p>
-      <p class="tabs-item"><%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn-ghost" %></p>
-    </li>
-  <% end %>
-</ol>
+<h1 class="text-center mt-4 py-3">My bookings</h1>
 
 <div class="container vh-100">
   <div class="cards-booking">
-    <% @bookings.each do |booking| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <%if @bookings.empty?%>
+      <div class="card-product-none">
         <div class="card-product-infos">
-          <h2><%= booking.comment%></h2>
+          <h2>Product name</h2>
           <p>Product description with <strong>relevant info</strong> only.</p>
         </div>
       </div>
-    <% end %>
+    <%else%>
+      <% @bookings.each do |booking| %>
+        <div class="card-product">
+          <%= cl_image_tag booking.item.photo.key, height: 300, width: 400, crop: :fill %>
+          <div class="card-product-infos">
+            <h2><%= booking.item.name%></h2>
+            <p>You've booked me from <strong><%=booking.start%></strong> to <strong><%=booking.return%></strong>.</p>
+            <p><strong class="fas fa-comment"></strong> <%=booking.comment%></p>
+          </div>
+          <%= link_to "Edit This Booking", edit_booking_path(booking), class: "btn btn-info edit-book" %>
+          <%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger delete-book" %>
+        </div>
+      <% end %>
+    <%end%>
   </div>
 </div>
