@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[edit update destroy]
+  before_action :set_bookings, except: :index
   before_action :set_item, only: %i[new create]
   # after_action :authorize_booking, expect: :index
 
