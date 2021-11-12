@@ -1,11 +1,12 @@
 <div class="form-item">
   <%= simple_form_for ([@item]) do |f| %>
+  <h2>Create a new item</h2>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file%>
     <%= f.association :category,input_html: { class: 'select2', id: 'category-input' } %>
     <%= f.input :price %>
     <%= f.input :address %>
-    <%= f.submit class:"btn btn-ghost"%>
+    <%= f.submit class:"btn btn-flat btn-lg btn-block"%>
   <% end %>
 </div>

@@ -1,10 +1,11 @@
 <div style="height: 71vh;">
   <div class="form-booking">
+  <h2>All your bookings</h2>
     <%= simple_form_for([@item, @booking]) do |f|%>
     <%= f.input :comment %>
     <%= f.input :start, as: :date, html5: true %>
     <%= f.input :return, as: :date, html5: true%>
-    <%= f.submit class:"btn btn-ghost"%>
+    <%= f.submit class:"btn btn-flat btn-lg btn-block"%>
   <% end %>
   </div>
 </div>
