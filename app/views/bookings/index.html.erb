@@ -23,6 +23,13 @@
           <%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are You Sure?"}, class: "btn btn-danger delete-book" %>
         </div>
       <% end %>
+      <br>
+      <% @total = @bookings.sum do |booking|%>
+        <% @days = booking.return.jd - booking.start.jd %>
+        <% @price = @days * booking.item.price %>
+      <% end %>
+      Total: <strong>Rs <%= @total %></strong>
+      <hr>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
           Pay now
         </button>
@@ -51,6 +58,7 @@
           <p><%= booking.item.name %></p>
         <% end %>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
