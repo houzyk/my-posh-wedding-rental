@@ -4,9 +4,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.item = @item
     if @review.save
-      redirect_to item_path(@item)
+      redirect_to item_path(@item , anchor: "review-#{@review.id}")
     else
-      render 'items/show'
+      redirect_to item_path(@item)
     end
     authorize @review
   end

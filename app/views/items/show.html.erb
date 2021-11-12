@@ -54,7 +54,7 @@
     <div class="d-flex mt-4 mb-4">
       <div class="reviews col-6">
         <% @item.reviews.each do |review| %>
-          <%= review.comment %>
+          <p id="review-<%= review.id %>"><%= review.comment %></p>
           <br>
           <% review.rating.times do %>
             <span><i class="fas fa-star"></i></span>
