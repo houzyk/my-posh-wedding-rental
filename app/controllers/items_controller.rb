@@ -29,7 +29,8 @@ class ItemsController < ApplicationController
     if @item.reviews.empty?
       @ratings = 0
     else
-      @ratings = (@item.reviews.sum{|review| review.rating }) / @item.reviews.length.to_f
+      @reviews = @item.reviews
+      @ratings = (@reviews.sum{|review| review.rating }) / @reviews.length.to_f
     end
   end
 
