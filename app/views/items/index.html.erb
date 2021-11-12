@@ -29,17 +29,15 @@
           <img src="https://images.unsplash.com/photo-1522675378431-f2c7406d4173?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80" />
         <%end%>
         <div class="card-trip-infos">
-          <div class="d-flex flex-column">
-            <h2><%= item.name%> <span class="item-category">#<%= item.category.name%></span></h2>
-
+            <h2><%= item.name%></h2>
+            <p><span class="item-category">#<%= item.category.name%></span></p>
             <% if item.description.size > 40 %>
               <p><%= item.description.first(40)%>...</p>
             <% else %>
               <p><%= item.description%></p>
             <% end %>
 
-            <%= link_to 'More Info', item_path(item), class: "btn btn-primary mt-auto" %>
-          </div>
+            <%= link_to 'More Info', item_path(item), class: "btn btn-primary btn-block" %>
         </div>
         </div>
       <% end %>
