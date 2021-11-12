@@ -68,10 +68,11 @@
           <% @item.reviews.each do |review| %>
             <div class="review">
               <p><%= Time.now.strftime("%B %d, %Y") %></p>
-              <span id="review-<%= review.id %>"><%= review.comment %></span>
-              <% review.rating.times do %>
+              <p><% review.rating.times do %>
                 <span><i class="fas fa-star"></i></span>
-              <% end %>
+              <% end %></p>
+              <p id="review-<%= review.id %>"><%= review.comment %></p>
+
             </div>
           <% end %>
         </div>
