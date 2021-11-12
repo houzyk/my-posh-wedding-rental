@@ -26,7 +26,7 @@
             <%= cl_image_tag booking.item.photo.key, height: 300, width: 400, crop: :fill %>
             <div class="card-product-infos">
               <h2><%= booking.item.name%></h2>
-              <p>You've booked me from <strong><%=booking.start%></strong> to <strong><%=booking.return%></strong>.</p>
+              <p>You've booked me for <strong><%= booking.return.jd - booking.start.jd %></strong> days: <strong><%=booking.start%></strong> to <strong><%=booking.return%></strong>.</p>
               <p><strong class="fas fa-comment"></strong> <%=booking.comment%></p>
             </div>
             <%= link_to "Edit This Booking", edit_booking_path(booking), class: "btn btn-info edit-book" %>
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Checkout</button>
+        <%= link_to 'Checkout', bookings_path, class:"btn btn-success" %>
       </div>
     </div>
   </div>
