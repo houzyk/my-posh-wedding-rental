@@ -35,7 +35,7 @@ puts "Created #{Category.count} categories"
 puts 'Starting seed'
 
 file = URI.open('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGRyZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-item = Item.new(name: 'Simple but Amazing Dress', description: 'White dress for ladies and for any wedding', category: Category.find_by(name: "Wedding Dress"), price: 250.0, user: User.first, address: 'Vacoas, Mauritius')
+item = Item.new(name: 'Amazing Dress', description: 'White dress for ladies', category: Category.find_by(name: "Wedding Dress"), price: 250.0, user: User.first, address: 'Vacoas, Mauritius')
 item.photo.attach(io: file, filename: 'dress', content_type: 'image')
 item.save
 puts 'Item created'
@@ -50,7 +50,7 @@ item3.photo.attach(io: file3, filename: 'bridesmaid', content_type: 'image')
 item3.save
 puts 'Item created'
 file4 = URI.open('https://media.istockphoto.com/photos/man-and-woman-couple-looking-at-camera-sitting-on-sofa-pune-picture-id1024630156?b=1&k=20&m=1024630156&s=170667a&w=0&h=_OPgGLPFsXxxB4m5AoiiblPZtdOKcvJA4iHK9WywBXg=')
-item4 = Item.new(name: 'Printed Art Silk Dhoti Sherwani', description: 'A must have!', category: Category.find_by(name: "Indian Traditional"), price: 500.0, user: User.first, address: 'Rose-Hill, Mauritius')
+item4 = Item.new(name: 'Silk Dhoti Sherwani', description: 'A must have!', category: Category.find_by(name: "Indian Traditional"), price: 500.0, user: User.first, address: 'Rose-Hill, Mauritius')
 item4.photo.attach(io: file4, filename: 'indian', content_type: 'image')
 item4.save
 puts 'Item created'
