@@ -1,20 +1,21 @@
-<div class="m-4">
+<div class="m-4 items-top">
   <% if @items.size == 0 %>
-    <h2>Sorry, no items nearby...</h2>
+    <% itemnumber = "Sorry, we have no items to rent"%>
   <% elsif @items.size == 1 %>
-    <h2>You have 1 item ready for rent, be quick</h2>
+    <% itemnumber = "You have 1 item ready to rent, be quick"%>
   <% else %>
-    <h2>There are <%= @items.size %> wedding items ready for rental</h2>
+    <% itemnumber = "You have #{@items.size} items ready to rent. Search them here"%>
   <% end %>
-  <%= form_tag items_path,class:"form-inline my-4", method: :get do %>
-    <div class="row w-50">
-        <%= submit_tag "Search", class: "btn btn-flat col-2" %>
+  <%= form_tag items_path, method: :get do %>
+      <div class="search-form-control form-group">
         <%= text_field_tag :query,
           params[:query],
-          class: "col",
-          placeholder: "Find an Item"
+          class: "form-control string required",
+          id: "search_query",
+          placeholder: "#{itemnumber}"
         %>
-    </div>
+        <%= submit_tag "Search", class: "btn btn-flat" %>
+      </div>
   <% end %>
 </div>
 
@@ -43,10 +44,9 @@
         </div>
       <% end %>
   </div>
-
-  <div id="map"
-        style="width: 1200px; height: 80vh;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div id="map"
+          style="width: 1200px; height: 80vh;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 </div>
