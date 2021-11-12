@@ -54,21 +54,26 @@
   <div class="col-10 mx-auto">
 
       <% if @item.reviews.blank? %>
-        <h3>Nobody has yet reviewed <strong><%= @item.name %></strong></h3>
+        <%
+=begin%>
+ <h3>Nobody has yet reviewed</h3>
+<%
+=end%>
       <% else %>
-        <h3><%= pluralize @item.reviews.size, "review" %> for <%= @item.name %></h3>
+        <h3><%= pluralize @item.reviews.size, "review" %></h3>
       <% end %>
 
 
       <div class="d-flex mt-4 mb-4">
         <div class="reviews col-6">
           <% @item.reviews.each do |review| %>
-            <p id="review-<%= review.id %>"><%= review.comment %></p>
-            <br>
-            <% review.rating.times do %>
-              <span><i class="fas fa-star"></i></span>
-            <% end %>
-            <hr>
+            <div class="review">
+              <p><%= Time.now.strftime("%B %d, %Y") %></p>
+              <span id="review-<%= review.id %>"><%= review.comment %></span>
+              <% review.rating.times do %>
+                <span><i class="fas fa-star"></i></span>
+              <% end %>
+            </div>
           <% end %>
         </div>
         <div class="review-form col-6" id="review-form">

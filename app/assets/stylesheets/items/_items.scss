@@ -24,9 +24,23 @@
 
 .item-name-show.fas {
   font-size: 30px;
-  color: rgb(39, 218, 116);
+  color: black;
+  opacity: 0.7;
+}
+
+.item-name-show.fas:hover {
+  opacity: 0.9;
 }
 
 .fas.fa-star{
   color: rgb(258, 180, 8);
+}
+
+.review{
+  border: 1px solid rgb(235,235,235);
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
